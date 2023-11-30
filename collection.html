@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Pokémon Collection</title>
+</head>
+<body>
+    <h1>Your Pokémon Collection</h1>
+    <ul>
+        {% for pokemon in current_user.pokemon %}
+            <li>
+                {{ pokemon.name }}
+                <a href="{{ url_for('pokemon.remove_pokemon', pokemon_id=pokemon.id) }}">Remove</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('home') }}">Back to Home</a>
+</body>
+</html>

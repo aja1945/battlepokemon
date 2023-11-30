@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battle</title>
+</head>
+<body>
+    <h1>Battle Against {{ opponent.first_name }}</h1>
+    <h2>Your Pokémon</h2>
+    <ul>
+        {% for pokemon in current_user.pokemon %}
+            <li>
+                {{ pokemon.name }} (HP: {{ pokemon.hp }}, Attack: {{ pokemon.attack }}, Defense: {{ pokemon.defense }})
+                <img src="{{ pokemon.image_url }}" alt="{{ pokemon.name }} Image">
+            </li>
+        {% endfor %}
+    </ul>
+    <h2>{{ opponent.first_name }}'s Pokémon</h2>
+    <ul>
+        {% for pokemon in opponent.pokemon %}
+            <li>
+                {{ pokemon.name }} (HP: {{ pokemon.hp }}, Attack: {{ pokemon.attack }}, Defense: {{ pokemon.defense }})
+                <img src="{{ pokemon.image_url }}" alt="{{ pokemon.name }} Image">
+            </li>
+        {% endfor %}
+    </ul>
+    <form method="post">
+        <button type="submit">Attack!</button>
+    </form>
+    <a href="{{ url_for('home') }}">Back to Home</a>
+</body>
+</html>
